@@ -34,23 +34,23 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeigth);
+  createCanvas(windowWidth,windowHeight);
   
-  trex = createSprite(50,heigth-70,20,50);
+  trex = createSprite(50,height-70,20,50);
   
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);
   trex.scale = 0.5;
   
-  ground = createSprite(wigth/2,heigth-75,wigth,20);
+  ground = createSprite(width/2,height-75,width,20);
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
   
-  gameOver = createSprite(wigth/2,heigth/2-50);
+  gameOver = createSprite(width/2,height/2-50);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(wigth/2,heigth/2);
+  restart = createSprite(width/2,height/2);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
@@ -59,7 +59,7 @@ function setup() {
   gameOver.visible = false;
   restart.visible = false;
   
-  invisibleGround = createSprite(wigth/2,heigth-70,wigth,10);
+  invisibleGround = createSprite(width/2,height-70,width,10);
   invisibleGround.visible = false;
   
   cloudsGroup = new Group();
@@ -70,7 +70,7 @@ function setup() {
 
 function draw() {
   //trex.debug = true;
-  background(255);
+  background("blue");
   text("Score: "+ score, 500,50);
   
   if (gameState===PLAY){
@@ -124,8 +124,8 @@ function draw() {
 function spawnClouds() {
   //write code here to spawn the clouds
   if (frameCount % 60 === 0) {
-    var cloud = createSprite(wigth,120,40,10);
-    cloud.y = Math.round(random(80,heigth/2));
+    var cloud = createSprite(width,120,40,10);
+    cloud.y = Math.round(random(80,height/2));
     cloud.addImage(cloudImage);
     cloud.scale = 0.5;
     cloud.velocityX = -3;
@@ -145,7 +145,7 @@ function spawnClouds() {
 
 function spawnObstacles() {
   if(frameCount % 60 === 0) {
-    var obstacle = createSprite(wigth,heigth-95,10,40);
+    var obstacle = createSprite(width,height-95,10,40);
     //obstacle.debug = true;
     obstacle.velocityX = -(6 + 3*score/100);
     
